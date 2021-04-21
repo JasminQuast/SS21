@@ -1,3 +1,6 @@
+./.idea
+./.gradle
+
 HELP.md
 .gradle
 build/
