@@ -1,5 +1,6 @@
 package com.example.demo;
 
+
 public class User {
 
     private final String email;
