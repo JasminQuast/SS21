@@ -1,35 +1,33 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
 public class DiaryRestController {
 
-        private final DiaryService diaryService;
+        private final DiaryService diaryServive;
 
-
-        public DiaryRestController(DiaryService diaryService) {
-                this.diaryService = diaryService;
+        @Autowired
+        public DiaryRestController(DiaryService diaryServive) {
+                this.diaryServive = diaryServive;
         }
 
-        @GetMapping("/getNote")
+        @GetMapping(path = "/note")
         public ResponseEntity<List<Note>> getAllNotes (){
-                var list = diaryService.getNotes();
-                return ResponseEntity.ok(list);
+                var noteList = diaryServive.getNotes();
+           return ResponseEntity.ok(noteList);
         }
 
-        @PostMapping("/note")
+        @PostMapping(path = "/note")
                 public ResponseEntity<Void> note (){
-                        diaryService.createNote();
+                        diaryServive.createNote();
                         return ResponseEntity.ok().build();
                 }
-
-
         }
 
 
