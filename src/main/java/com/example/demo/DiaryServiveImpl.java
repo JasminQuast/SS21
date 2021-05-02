@@ -11,7 +11,8 @@ public class DiaryServiveImpl implements DiaryService {
 
     @Override
     public List<Note> getNotes() {
-      return List.of(new Note( "Das ist eine Notiz", "Hallo Welt", 1));
+        return null;
+    //  return List.of(new Note( "Das ist eine Notiz", "Hallo Welt", 1));
     }
 
     @Override

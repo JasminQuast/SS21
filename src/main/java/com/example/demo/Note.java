@@ -1,31 +1,76 @@
 package com.example.demo;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.UUID;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
+@Entity(name = "Note")
 public class Note {
 
-    private String id;
+    @Id
+    @SequenceGenerator(
+            name = "note_sequence",
+            sequenceName = "note_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = SEQUENCE,
+            generator = "note_sequence"
+    )
+
+    @Column(
+            name = "id",
+            updatable = false
+    )
+    private Long id;
+
+    @Column(
+            name = "date",
+            nullable = false
+    )
     private LocalDate date;
+
+    @Column(
+            name = "headline",
+            columnDefinition = "Text"
+    )
     private String headline;
+
+    @Column(
+            name = "text",
+            columnDefinition = "Text"
+    )
     private String text;
-    private int emotion;
+
+    @Column(
+            name = "emotion"
+    )
+    private Integer emotion;
+
     //private List imageList;
 
 
-
-    public Note(){
-    }
-
-    public Note(String headline, String text, int emotion) {
-        this.id = UUID.randomUUID().toString();
-        this.date = LocalDate.now(ZoneId.of("Europe/Berlin"));
+    public Note(LocalDate date, String headline, String text, Integer emotion) {
+        this.date = date;
         this.headline = headline;
         this.text = text;
         this.emotion = emotion;
     }
 
+    public Note(){
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDate getDate() {
         return date;
@@ -33,14 +78,6 @@ public class Note {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getHeadline() {
@@ -59,11 +96,22 @@ public class Note {
         this.text = text;
     }
 
-    public int getEmotion() {
+    public Integer getEmotion() {
         return emotion;
     }
 
-    public void setEmotion(int emotion) {
+    public void setEmotion(Integer emotion) {
         this.emotion = emotion;
+    }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "id=" + id +
+                ", date=" + date +
+                ", headline='" + headline + '\'' +
+                ", text='" + text + '\'' +
+                ", emotion=" + emotion +
+                '}';
     }
 }
