@@ -51,8 +51,8 @@ public class Note {
     //private List imageList;
 
 
-    public Note(LocalDate date, String headline, String text, Integer emotion) {
-        this.date = date;
+    public Note(String headline, String text, Integer emotion) {
+        this.date = LocalDate.now();
         this.headline = headline;
         this.text = text;
         this.emotion = emotion;

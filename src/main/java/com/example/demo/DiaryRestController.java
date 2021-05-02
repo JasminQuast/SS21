@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -24,11 +25,10 @@ public class DiaryRestController {
         }
 
         @PostMapping(path = "/note")
-                public ResponseEntity<Void> note (){
-                        diaryServive.createNote();
-                        return ResponseEntity.ok().build();
-                }
+        public void createNewNote(@RequestBody Note note){
+                diaryServive.createNote(note);
         }
+}
 
 
 
