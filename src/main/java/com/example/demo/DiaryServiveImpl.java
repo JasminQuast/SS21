@@ -7,14 +7,13 @@ import java.util.List;
 @Service
 public class DiaryServiveImpl implements DiaryService {
 
+
     private final DiaryRepository diaryRepository;
 
     @Autowired
     public DiaryServiveImpl(DiaryRepository diaryRepository) {
         this.diaryRepository = diaryRepository;
     }
-
-    //List<String> noteList;
 
     @Override
     public List<Note> getNotes() {
