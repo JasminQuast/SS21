@@ -2,8 +2,6 @@ package com.example.demo;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.UUID;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
