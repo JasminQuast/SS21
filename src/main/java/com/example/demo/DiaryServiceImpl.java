@@ -5,13 +5,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DiaryServiveImpl implements DiaryService {
-
+public class DiaryServiceImpl implements DiaryService {
 
     private final DiaryRepository diaryRepository;
 
     @Autowired
-    public DiaryServiveImpl(DiaryRepository diaryRepository) {
+    public DiaryServiceImpl(DiaryRepository diaryRepository) {
         this.diaryRepository = diaryRepository;
     }
 
@@ -26,9 +25,7 @@ public class DiaryServiveImpl implements DiaryService {
     }
 
     @Override
-    public void updateNote() {
-
-    }
+    public void updateNote() {}
 
     @Override
     public void deleteNote() {
