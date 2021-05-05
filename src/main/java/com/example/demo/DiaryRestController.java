@@ -3,8 +3,6 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -14,11 +12,11 @@ import java.util.List;
 @RestController
 public class DiaryRestController {
 
-        private final DiaryService diaryServive;
+        private final DiaryService diaryService;
 
         @Autowired
-        public DiaryRestController(DiaryService diaryServive) {
-                this.diaryServive = diaryServive;
+        public DiaryRestController(DiaryService diaryService) {
+                this.diaryService = diaryService;
         }
 
         @GetMapping("/")
@@ -35,7 +33,7 @@ public class DiaryRestController {
 
         @GetMapping(path = "/noteList")
         public ResponseEntity<List<Note>> getAllNotes (){
-                var noteList = diaryServive.getNotes();
+                var noteList = diaryService.getNotes();
            return ResponseEntity.ok(noteList);
         }
 
