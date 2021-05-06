@@ -2,9 +2,10 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -31,15 +32,29 @@ public class DiaryRestController {
                 );
         }
 
-        @GetMapping(path = "/noteList")
+        @GetMapping(path = "/note")
         public ResponseEntity<List<Note>> getAllNotes (){
                 var noteList = diaryService.getNotes();
            return ResponseEntity.ok(noteList);
         }
 
-        /*@PostMapping(path = "/note")
+        @PostMapping(path = "/note")
         public void createNewNote(@RequestBody Note note){
-                diaryServive.createNote(note);
+                diaryService.createNote(note);
+        }
+
+        /*@GetMapping("/testTemplate")
+        public String home(Model m) {
+              Data d = new Data();
+              m.setAttribute(d.myData);
+              return "noteresult";
+        }
+
+        @PostMapping("/createNote")
+        public String noteSubmit(@ModelAttribute Note note, Model model) {
+                diaryService.save(note);
+                model.addAttribute("note", note);
+                return "noteresult";
         }*/
 }
 
