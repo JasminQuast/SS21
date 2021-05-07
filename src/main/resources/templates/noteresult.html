@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" lang="de">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Tagebuch</title>
 </head>
 <body>
-<h2>Super, du hast ein Eintrag im Tagebuch erstellt. Erzähl mir, wie dein Tag war ...</h2>
-<p th:ext="'name: ' + ${note.date}"></p>
-<p th:text="'price: ' + ${note.headline}"></p>
+<h2>Super, du hast einen neuen Tagebucheintrag erstellt.</h2>
+<p th:text="'date: ' + ${note.date}"></p>
+<p th:text="'headline: ' + ${note.headline}"></p>
 <a href="/listnote">Alle Tagebucheinträge anzeigen</a>
 </body>
 </html>

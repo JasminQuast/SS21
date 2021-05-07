@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,19 +44,6 @@ public class DiaryRestController {
                 diaryService.createNote(note);
         }
 
-        /*@GetMapping("/testTemplate")
-        public String home(Model m) {
-              Data d = new Data();
-              m.setAttribute(d.myData);
-              return "noteresult";
-        }
-
-        @PostMapping("/createNote")
-        public String noteSubmit(@ModelAttribute Note note, Model model) {
-                diaryService.save(note);
-                model.addAttribute("note", note);
-                return "noteresult";
-        }*/
 }
 
 

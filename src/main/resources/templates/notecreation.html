@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Erzähl mir, wie dein Tag war ...</title>
+</head>
+<body>
+<h2>Erstelle einen Tagebucheintrag</h2>
+<form action="#" th:action="@{/createNote}" th:object="${note}" method="post" >
+    <p>Name: <input type="text" th:field="*{date}" /></p>
+    <p>Headline: <input type="text" th:field="*{headline}" /></p>
+    <p>Text: <input type="text" th:field="*{text}" /></p>
+    <p><input type="submit" value="Submit" /><input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
