@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Notes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+</head>
+<body>
+    <h2> Deine Notizen</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">headline</th>
+        <th scope="col">text</th>
+        <th scope="col">date</th>
+    </thead>
+    <tbody>
+    <tr th:each="note: ${note}">
+        <td><span th:text="${note.headline}">headline</span></td>
+        <td><span th:text="${note.text}">text</span></td>
+        <td><span th:text="${note.date}">date</span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
