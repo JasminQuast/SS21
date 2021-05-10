@@ -6,8 +6,9 @@
 </head>
 <body>
 <h2>Super, du hast einen neuen Tagebucheintrag erstellt.</h2>
-<p th:text="'date: ' + ${note.date}"></p>
 <p th:text="'headline: ' + ${note.headline}"></p>
-<a href="/listnote">Alle Tagebucheinträge anzeigen</a>
+<p th:text="'text: ' + ${note.text}"></p>
+<p th:text="'emotion: ' + ${note.emotion}"></p>
+<a href="/notes">Liste der Notizen</a>
 </body>
 </html>

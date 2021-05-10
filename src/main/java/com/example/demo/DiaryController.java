@@ -25,17 +25,16 @@ public class DiaryController {
     @GetMapping(path = "/notes")
         public String getNotes(Model model){
 
-        model.addAttribute("note", Arrays.asList(
-                new Note("erste Notiz", "123", 1, LocalDate.now()),
-                new Note("zweite Notiz", "abc", 2, LocalDate.now())
-        ));
+        var noteList = diaryService.getNotes();
+        model.addAttribute("note", noteList
+        );
             return "notes";
         }
 
 
     @PostMapping("/createNote")
     public String noteSubmit(@ModelAttribute Note note, Model model) {
-        //diaryService.createNote(note);
+       // diaryService.createNote(note);
         model.addAttribute("note",note);
         return "noteresult";
     }
