@@ -32,6 +32,12 @@ public class DiaryController {
         }
 
 
+    @GetMapping("/createNote")
+    public String noteSubmit(Model model) {
+        model.addAttribute("note", new Note());
+        return "notecreation";
+    }
+
     @PostMapping("/createNote")
     public String noteSubmit(@ModelAttribute Note note, Model model) {
        // diaryService.createNote(note);
