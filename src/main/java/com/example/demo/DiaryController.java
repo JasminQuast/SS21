@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-import java.time.LocalDate;
-import java.util.Arrays;
-
 @Controller
 public class DiaryController {
 
@@ -40,7 +36,7 @@ public class DiaryController {
 
     @PostMapping("/createNote")
     public String noteSubmit(@ModelAttribute Note note, Model model) {
-       // diaryService.createNote(note);
+        diaryService.createNote(note);
         model.addAttribute("note",note);
         return "noteresult";
     }

@@ -2,7 +2,7 @@ package com.example.demo;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -59,20 +59,8 @@ public class Note {
         this.emotion = emotion;
     }
 
-    public Note(String headline, String text, Integer emotion) {
-//        LocalDate localDate = LocalDate.now();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        String dateFormat = localDate.format(formatter);
-
-        this.date = LocalDate.of(2021,5,10);
-        this.id = id;
-        this.headline = headline;
-        this.text = text;
-        this.emotion = emotion;
-    }
-
     public Note(){
-
+        this.date = LocalDate.now();
     }
 
     public Long getId() {
