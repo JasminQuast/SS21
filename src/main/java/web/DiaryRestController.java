@@ -1,5 +1,7 @@
-package com.example.demo;
+package web;
 
+import com.example.demo.DiaryService;
+import com.example.demo.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
