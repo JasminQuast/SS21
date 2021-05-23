@@ -1,12 +1,14 @@
 package com.example.demo;
 
 import config.Endpoints;
+import config.ViewNames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class DiaryController {
@@ -19,24 +21,24 @@ public class DiaryController {
     }
 
     @GetMapping(path = Endpoints.Site.HOME)
-    public String homePage(Model model){
+    public ModelAndView homePage(Model model){
 
         //model.addAttribute("home", diaryService.);
-        return "frontend/home";
+        return new ModelAndView(ViewNames.HOME);
     }
 
     @GetMapping(path = Endpoints.Site.OVERVIEW)
-    public String overviewPage(Model model){
+    public ModelAndView overviewPage(Model model){
 
         //model.addAttribute("home", diaryService.);
-        return "frontend/overview";
+        return new ModelAndView(ViewNames.OVERVIEW);
     }
 
     @GetMapping(path = Endpoints.Site.SETTINGS)
-    public String settingPage(Model model){
+    public ModelAndView settingPage(Model model) {
 
         //model.addAttribute("home", diaryService.);
-        return "frontend/settings";
+        return new ModelAndView(ViewNames.SETTINGS);
     }
 
     @GetMapping(path = "/notes")
@@ -44,19 +46,19 @@ public class DiaryController {
 
         var noteList = diaryService.getNotes();
         model.addAttribute("note", noteList);
-            return "/resources/templates/frontend/notes.html";
+            return "/resources/templates/notes.html";
         }
 
     @GetMapping("/createNote")
     public String noteSubmit(Model model) {
         model.addAttribute("note", new Note());
-        return "/resources/templates/frontend/notecreation.html";
+        return "/resources/templates/notecreation.html";
     }
 
     @PostMapping("/createNote")
     public String noteSubmit(@ModelAttribute Note note, Model model) {
         diaryService.createNote(note);
         model.addAttribute("note",note);
-        return "/resources/templates/frontend/noteresult.html";
+        return "/resources/templates/noteresult.html";
     }
 }

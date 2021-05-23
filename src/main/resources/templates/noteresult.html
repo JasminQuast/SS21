@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Tagebuch</title>
+</head>
+<body>
+<h2>Super, du hast einen neuen Tagebucheintrag erstellt.</h2>
+<p th:text="'headline: ' + ${note.headline}"></p>
+<p th:text="'text: ' + ${note.text}"></p>
+<p th:text="'emotion: ' + ${note.emotion}"></p>
+<a href="/notes">Liste der Notizen</a>
+</body>
+</html>

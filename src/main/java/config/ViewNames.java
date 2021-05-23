@@ -2,11 +2,11 @@ package config;
 
 public class ViewNames {
 
-    public static final String HOME = "frontend/";
-    public static final String TODAY = "frontend/today";
-    public static final String OVERVIEW = "frontend/overview";
-    public static final String SETTINGS = "frontend/settings";
+    public static final String HOME = "home";
+    public static final String TODAY = "today";
+    public static final String OVERVIEW = "overview";
+    public static final String SETTINGS = "settings";
 
-    public static final String LOGIN = "frontend/login";
-    public static final String REGISTER = "frontend/register";
+    public static final String LOGIN = "login";
+    public static final String REGISTER = "register";
 }
