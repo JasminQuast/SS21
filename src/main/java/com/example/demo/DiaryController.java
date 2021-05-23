@@ -41,24 +41,24 @@ public class DiaryController {
         return new ModelAndView(ViewNames.SETTINGS);
     }
 
-    @GetMapping(path = "/notes")
-        public String getNotes(Model model){
+    @GetMapping(path = Endpoints.Site.NOTES)
+        public ModelAndView getNotes(Model model){
 
         var noteList = diaryService.getNotes();
         model.addAttribute("note", noteList);
-            return "/resources/templates/notes.html";
+            return new ModelAndView(ViewNames.NOTES);
         }
 
-    @GetMapping("/createNote")
-    public String noteSubmit(Model model) {
+    @GetMapping(path = Endpoints.Site.CREATENOTE)
+    public ModelAndView noteSubmit(Model model) {
         model.addAttribute("note", new Note());
-        return "/resources/templates/notecreation.html";
+        return new ModelAndView(ViewNames.NOTECREATION);
     }
 
-    @PostMapping("/createNote")
-    public String noteSubmit(@ModelAttribute Note note, Model model) {
+    @PostMapping(path = Endpoints.Site.CREATENOTE)
+    public ModelAndView noteSubmit(@ModelAttribute Note note, Model model) {
         diaryService.createNote(note);
         model.addAttribute("note",note);
-        return "/resources/templates/noteresult.html";
+        return new ModelAndView(ViewNames.NOTERESULT);
     }
 }
