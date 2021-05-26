@@ -20,12 +20,12 @@ public class DiaryController {
         this.diaryService = diaryService;
     }
 
-    @GetMapping(path = Endpoints.Site.HOME)
-    public ModelAndView homePage(Model model){
-
-        //model.addAttribute("home", diaryService.);
-        return new ModelAndView(ViewNames.HOME);
-    }
+//    @GetMapping(path = Endpoints.Site.HOME)
+//    public ModelAndView homePage(Model model){
+//
+//        //model.addAttribute("home", diaryService.);
+//        return new ModelAndView(ViewNames.HOME);
+//    }
 
     @GetMapping(path = Endpoints.Site.OVERVIEW)
     public ModelAndView overviewPage(Model model){
@@ -49,13 +49,13 @@ public class DiaryController {
             return new ModelAndView(ViewNames.NOTES);
         }
 
-    @GetMapping(path = Endpoints.Site.CREATENOTE)
+    @GetMapping(path = Endpoints.Site.HOME)
     public ModelAndView noteSubmit(Model model) {
         model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.NOTECREATION);
     }
 
-    @PostMapping(path = Endpoints.Site.CREATENOTE)
+    @PostMapping(path = Endpoints.Site.HOME)
     public ModelAndView noteSubmit(@ModelAttribute Note note, Model model) {
         diaryService.createNote(note);
         model.addAttribute("note",note);

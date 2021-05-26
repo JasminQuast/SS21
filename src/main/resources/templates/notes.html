@@ -13,12 +13,14 @@
         <th scope="col">headline</th>
         <th scope="col">text</th>
         <th scope="col">date</th>
+        <th scope="col">emotion</th>
     </thead>
     <tbody>
     <tr th:each="note: ${note}">
         <td><span th:text="${note.headline}">headline</span></td>
         <td><span th:text="${note.text}">text</span></td>
         <td><span th:text="${note.date}">date</span></td>
+        <td><span th:text="${note.emotion}">emotion</span></td>
     </tr>
     </tbody>
 </table>
