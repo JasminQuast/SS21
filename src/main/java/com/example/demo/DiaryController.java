@@ -30,7 +30,8 @@ public class DiaryController {
     @GetMapping(path = Endpoints.Site.OVERVIEW)
     public ModelAndView overviewPage(Model model){
 
-        //model.addAttribute("home", diaryService.);
+        var noteList = diaryService.getNotes();
+        model.addAttribute("note", noteList);
         return new ModelAndView(ViewNames.OVERVIEW);
     }
 
@@ -41,13 +42,13 @@ public class DiaryController {
         return new ModelAndView(ViewNames.SETTINGS);
     }
 
-    @GetMapping(path = Endpoints.Site.NOTES)
-        public ModelAndView getNotes(Model model){
-
-        var noteList = diaryService.getNotes();
-        model.addAttribute("note", noteList);
-            return new ModelAndView(ViewNames.NOTES);
-        }
+//    @GetMapping(path = Endpoints.Site.NOTES)
+//        public ModelAndView getNotes(Model model){
+//
+//        var noteList = diaryService.getNotes();
+//        model.addAttribute("note", noteList);
+//            return new ModelAndView(ViewNames.NOTES);
+//        }
 
     @GetMapping(path = Endpoints.Site.HOME)
     public ModelAndView noteSubmit(Model model) {

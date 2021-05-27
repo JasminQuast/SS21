@@ -1,3 +1,12 @@
 h1 {
     color: darkslategrey;
+    font-size: x-large;
+    font-family: Candara;
+    text-align: center;
+}
+
+h2 {
+    color: darkslategrey;
+    font-size: larger;
+    font-family: Candara;
 }
