@@ -2,13 +2,30 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="de">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Tagebucheintrag</title>
+    <title>Speicherbestätigung</title>
 </head>
 <body>
-<h2>Super, du hast einen neuen Tagebucheintrag erstellt.</h2>
-<p th:text="'headline: ' + ${note.headline}"></p>
-<p th:text="'text: ' + ${note.text}"></p>
-<p th:text="'emotion: ' + ${note.emotion}"></p>
-<a href="/notes">Liste der Notizen</a>
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Super, du hast einen neuen Tagebucheintrag erstellt!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                <p th:text="'Titel: '${note.headline}"></p>
+                <p th:text="'Eintrag: ' + ${note.text}"></p>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><a href="/home">Close</a></button>
+                <button type="button" class="btn btn-primary"><a href="/overview">Alle Einträge</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -20,13 +20,6 @@ public class DiaryController {
         this.diaryService = diaryService;
     }
 
-//    @GetMapping(path = Endpoints.Site.HOME)
-//    public ModelAndView homePage(Model model){
-//
-//        //model.addAttribute("home", diaryService.);
-//        return new ModelAndView(ViewNames.HOME);
-//    }
-
     @GetMapping(path = Endpoints.Site.OVERVIEW)
     public ModelAndView overviewPage(Model model){
 
@@ -42,14 +35,6 @@ public class DiaryController {
         return new ModelAndView(ViewNames.SETTINGS);
     }
 
-//    @GetMapping(path = Endpoints.Site.NOTES)
-//        public ModelAndView getNotes(Model model){
-//
-//        var noteList = diaryService.getNotes();
-//        model.addAttribute("note", noteList);
-//            return new ModelAndView(ViewNames.NOTES);
-//        }
-
     @GetMapping(path = Endpoints.Site.HOME)
     public ModelAndView noteSubmit(Model model) {
         model.addAttribute("note", new Note());
@@ -60,6 +45,12 @@ public class DiaryController {
     public ModelAndView noteSubmit(@ModelAttribute Note note, Model model) {
         diaryService.createNote(note);
         model.addAttribute("note",note);
+        return new ModelAndView(ViewNames.NOTERESULT);
+    }
+
+    @GetMapping(path = Endpoints.Site.NOTERESULT)
+    public ModelAndView noteResult(Model model){
+        model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.NOTERESULT);
     }
 }
