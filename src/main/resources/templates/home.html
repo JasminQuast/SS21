@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html th:replace="~{layout :: layout (~{::body})}" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <title>Home</title>
 </head>
 <body>
-<h1>Hallo, ich hoffe du hattest einen schönen Tag!</h1>
+<h1>
+    Hallo, ich hoffe du hattest einen schönen Tag!
+</h1>
 
-<!--<form class="container" action="#" th:action="@{/createNote}" th:object="${note}" method="post">-->
-    <form class="container" action="#" th:action="@{/}" th:object="${note}" method="post">
+<form class="container" action="#" th:action="@{/}" th:object="${note}" method="post">
     <div class="input-group mb-3 mt-5 input-group-lg shadow" >
         <input type="text" class="form-control" placeholder="Gib deinem Tag einen Namen..." th:field="*{headline}">
     </div>
@@ -67,12 +76,82 @@
     </div>
 
     <div>
-        <button type="submit" class="btn btn-outline-primary mt-3"><a href="noteResult.html">Save</a></button>
+        <button type="submit"
+                class="btn btn-primary"
+        >
+            Save
+        </button>
     </div>
 
 </form>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<!-- Button trigger modal -->
+<button
+        type="submit"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+>
+    Fertig
+</button>
 
+<!-- Modal -->
+<div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cool, du hast einen neuen Eintrag erstellt!</h5>
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Folgende Eingaben wurden gespeichert:
+<!--                <p th:text="'Titel: '${note.headline}"></p>-->
+<!--                <p th:text="'Eintrag: ' + ${note.text}"></p>-->
+            </div>
+            <div class="modal-footer">
+                <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                >
+                    Close
+                </button>
+
+                <a class="nav-link" th:href="@{/overview}" th:classappend="${#request.requestURI == '/overview' ? 'active':''}"><button>Alle Einträge</button></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+></script>
 </body>
 </html>

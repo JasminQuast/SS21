@@ -8,6 +8,7 @@ public class Endpoints {
         public static final String OVERVIEW = "/overview";
         public static final String SETTINGS = "/settings";
         public static final String HOME = "/";
+        public static final String HOME2 = "/homeExistNote";
         public static final String NOTERESULT ="/noteRestult";
         public static final String NOTES ="/notes";
 

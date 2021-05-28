@@ -37,6 +37,7 @@ public class DiaryController {
 
     @GetMapping(path = Endpoints.Site.HOME)
     public ModelAndView noteSubmit(Model model) {
+        // wenn vorhanden / nicht vorhanden
         model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.NOTECREATION);
     }
@@ -45,12 +46,12 @@ public class DiaryController {
     public ModelAndView noteSubmit(@ModelAttribute Note note, Model model) {
         diaryService.createNote(note);
         model.addAttribute("note",note);
-        return new ModelAndView(ViewNames.NOTERESULT);
+        return new ModelAndView(ViewNames.HOME2);
     }
 
     @GetMapping(path = Endpoints.Site.NOTERESULT)
     public ModelAndView noteResult(Model model){
-        model.addAttribute("note", new Note());
-        return new ModelAndView(ViewNames.NOTERESULT);
+        //model.addAttribute("note", new Note());
+        return new ModelAndView(ViewNames.HOME);
     }
 }

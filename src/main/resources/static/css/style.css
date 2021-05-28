@@ -10,3 +10,8 @@ h2 {
     font-size: larger;
     font-family: Candara;
 }
+text {
+    color: darkslategrey;
+    font-family: Candara;
+    text-align: center
+}
