@@ -4,7 +4,6 @@ public class ViewNames {
 
     public static final String HOME = "home";
     public static final String HOME2 = "homeExistNote";
-    public static final String TODAY = "today";
     public static final String OVERVIEW = "overview";
     public static final String SETTINGS = "settings";
     public static final String NOTECREATION = "home";
