@@ -58,7 +58,7 @@ public class DiaryController {
 
 
     @GetMapping(path = Endpoints.Site.HOME)
-    public ModelAndView noteSubmit(Model model, Note note) throws SQLException {
+//    public ModelAndView noteSubmit(Model model, Note note) throws SQLException {
         // wenn vorhanden Datum von heute vorhanden
 //
 //        String dateSQL = "SELECT date FROM note";
@@ -87,7 +87,7 @@ public class DiaryController {
             L.error("Statement Error", e);
             throw new DataException(e);
         }*/
-
+    public ModelAndView noteSubmit(Model model){
         model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.NOTECREATION);
     }

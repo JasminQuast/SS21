@@ -12,6 +12,7 @@ public class Endpoints {
         public static final String NOTES ="/notes";
 
         public static final String LOGIN = "/login";
-        public static final String REGISTER = "/register";
+        public static final String LOGOUT= "/logout";
+//        public static final String REGISTER = "/register";
     }
 }
