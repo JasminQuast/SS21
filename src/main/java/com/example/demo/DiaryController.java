@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import config.Endpoints;
-import config.ViewNames;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.demo.config.Endpoints;
+import com.example.demo.config.ViewNames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.sql.*;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 @Controller
 public class DiaryController {
