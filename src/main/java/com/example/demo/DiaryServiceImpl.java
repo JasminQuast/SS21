@@ -1,7 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.List;
 
 @Service
@@ -25,10 +29,26 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
-    public void updateNote() {}
+    public void updateNote() {
+    }
 
     @Override
     public void deleteNote() {
+    }
 
+    @Override
+    public Note getNote(OidcUser user) {
+
+        var noteList = diaryRepository.findAll();
+        for (Note note : noteList) {
+            if (note.getOwner() != null) {
+                if (note.getOwner().equals(user.getEmail())) {
+                    if (note.getDate().equals(LocalDate.now())) {
+                        return note;
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

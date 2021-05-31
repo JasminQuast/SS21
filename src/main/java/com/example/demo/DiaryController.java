@@ -3,12 +3,16 @@ package com.example.demo;
 import com.example.demo.config.Endpoints;
 import com.example.demo.config.ViewNames;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class DiaryController {
@@ -49,7 +53,7 @@ public class DiaryController {
     }
 
 
-    @GetMapping(path = Endpoints.Site.HOME)
+//    @GetMapping(path = Endpoints.Site.HOME)
 //    public ModelAndView noteSubmit(Model model, Note note) throws SQLException {
         // wenn vorhanden Datum von heute vorhanden
 //
@@ -79,13 +83,22 @@ public class DiaryController {
             L.error("Statement Error", e);
             throw new DataException(e);
         }*/
-    public ModelAndView noteSubmit(Model model){
+
+    @GetMapping(path = Endpoints.Site.HOME)
+    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
+
+        Note todaysNote = diaryService.getNote(user);
+            if (todaysNote != null) {
+                model.addAttribute("note", todaysNote);
+                return new ModelAndView(ViewNames.HOME2);
+            }
         model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.NOTECREATION);
     }
 
     @PostMapping(path = Endpoints.Site.HOME)
-    public ModelAndView noteSubmit(@ModelAttribute Note note, Model model) {
+    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user,@ModelAttribute Note note, Model model) {
+        note.setOwner(user.getEmail());
         diaryService.createNote(note);
         model.addAttribute("note",note);
         return new ModelAndView(ViewNames.HOME2);

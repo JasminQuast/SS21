@@ -51,16 +51,23 @@ public class Note {
 
     //private List imageList;
 
+    @Column(
+            name = "owner",
+            columnDefinition = "Text"
+    )
+    private String owner;
 
-    public Note(String headline, String text, Integer emotion, LocalDate localDate) {
-        this.date = localDate;
-        this.headline = headline;
-        this.text = text;
-        this.emotion = emotion;
-    }
+
+//    public Note(String headline, String text, Integer emotion, LocalDate localDate) {
+//        this.date = localDate;
+//        this.headline = headline;
+//        this.text = text;
+//        this.emotion = emotion;
+//    }
 
     public Note(){
         this.date = LocalDate.now();
+
     }
 
     public Long getId() {
@@ -101,6 +108,14 @@ public class Note {
 
     public void setEmotion(Integer emotion) {
         this.emotion = emotion;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     @Override
