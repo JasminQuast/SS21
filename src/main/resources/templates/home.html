@@ -20,6 +20,8 @@
     Hallo, ich hoffe du hattest einen schönen Tag!
 </h1>
 
+<!--<h1 th:text="${name} + ', schön dich du sehen.'"></h1>-->
+
 <form class="container" action="#" th:action="@{/}" th:object="${note}" method="post">
     <div class="input-group mb-3 mt-5 input-group-lg shadow" >
         <input type="text" class="form-control" placeholder="Gib deinem Tag einen Namen..." th:field="*{headline}">
