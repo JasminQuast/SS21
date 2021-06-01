@@ -37,8 +37,9 @@
         <div class="card-body">
           <h5 class="card-title mt-3" th:text="${note.headline}"></h5>
           <p class="card-text mt-3" th:text="${note.text}"></p>
-          <button type="button" class="btn btn-outline-secondary mt-4">edit</button>
-          <button type="button" class="btn btn-outline-danger ms-2 mt-4">delete</button>
+          <a th:href="@{/editNote(id=${note.id})}" class="btn btn-outline-secondary mt-4">edit</a>
+<!--          <button type="button" class="btn btn-outline-secondary mt-4">edit</button>-->
+<!--          <button type="button" class="btn btn-outline-danger ms-2 mt-4">delete</button>-->
         </div>
       </div>
     </div>
