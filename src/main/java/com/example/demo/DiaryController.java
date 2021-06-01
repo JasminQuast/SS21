@@ -7,12 +7,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 public class DiaryController {
@@ -38,9 +34,8 @@ public class DiaryController {
     }
 
     @GetMapping(path = Endpoints.Site.OVERVIEW)
-    public ModelAndView overviewPage(Model model){
-
-        var noteList = diaryService.getNotes();
+    public ModelAndView overviewPage(@AuthenticationPrincipal OidcUser user,  Model model){
+        var noteList = diaryService.getNotesUser(user);
         model.addAttribute("note", noteList);
         return new ModelAndView(ViewNames.OVERVIEW);
     }
@@ -87,7 +82,7 @@ public class DiaryController {
     @GetMapping(path = Endpoints.Site.HOME)
     public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
 
-        Note todaysNote = diaryService.getNote(user);
+        Note todaysNote = diaryService.getTodaysNote(user);
             if (todaysNote != null) {
                 model.addAttribute("note", todaysNote);
                 return new ModelAndView(ViewNames.HOME2);
@@ -108,5 +103,16 @@ public class DiaryController {
     public ModelAndView noteResult(Model model){
         //model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.HOME);
+    }
+
+    @GetMapping(path = "/editNote")
+    public ModelAndView editNote (@RequestParam long id, Model model){
+    Note noteById = diaryService.getNoteById(id);
+    if(noteById != null){
+        model.addAttribute("note", noteById);
+        return new ModelAndView("editNote");
+    }
+    //error.Html hinzufügen und zurückgeben, falls ID in URL händisch abgeändert wurde
+    return null;
     }
 }
