@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Note")
-public class Note {
+public class Note implements Comparable {
 
     @Id
     @SequenceGenerator(
@@ -65,7 +65,7 @@ public class Note {
 //        this.emotion = emotion;
 //    }
 
-    public Note(){
+    public Note() {
         this.date = LocalDate.now();
 
     }
@@ -118,14 +118,30 @@ public class Note {
         this.owner = owner;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Note{" +
+//                "id=" + id +
+//                ", date=" + date +
+//                ", headline='" + headline + '\'' +
+//                ", text='" + text + '\'' +
+//                ", emotion=" + emotion +
+//                '}';
+//    }
+
+
     @Override
-    public String toString() {
-        return "Note{" +
-                "id=" + id +
-                ", date=" + date +
-                ", headline='" + headline + '\'' +
-                ", text='" + text + '\'' +
-                ", emotion=" + emotion +
-                '}';
+    public int compareTo(Object o) {
+        if (o instanceof Note) {
+            Note other = (Note) o;
+            if (this.date.isBefore(other.date)) {
+                return 1;
+            }
+            if (this.date.isAfter(other.date)) {
+                return -1;
+            }
+            return 0;
+        }
+        return 0;
     }
 }
