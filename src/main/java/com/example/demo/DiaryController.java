@@ -33,6 +33,12 @@ public class DiaryController {
         this.diaryService = diaryService;
     }
 
+    @GetMapping(path = Endpoints.Site.DIARYST)
+    public ModelAndView mainPage(Model model){
+
+        return new ModelAndView(ViewNames.DIARYST);
+    }
+
     @GetMapping(path = Endpoints.Site.OVERVIEW)
     public ModelAndView overviewPage(@AuthenticationPrincipal OidcUser user,  Model model){
         var noteList = diaryService.getNotesUser(user);

@@ -49,8 +49,6 @@ public class Note implements Comparable {
     )
     private Integer emotion;
 
-    //private List imageList;
-
     @Column(
             name = "owner",
             columnDefinition = "Text"
@@ -67,7 +65,6 @@ public class Note implements Comparable {
 
     public Note() {
         this.date = LocalDate.now();
-
     }
 
     public Long getId() {
@@ -128,7 +125,6 @@ public class Note implements Comparable {
 //                ", emotion=" + emotion +
 //                '}';
 //    }
-
 
     @Override
     public int compareTo(Object o) {

@@ -2,6 +2,7 @@ package com.example.demo.config;
 
 public class ViewNames {
 
+    public static final String DIARYST = "diaryst";
     public static final String HOME = "home";
     public static final String HOME2 = "homeExistNote";
     public static final String OVERVIEW = "overview";

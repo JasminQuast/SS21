@@ -15,3 +15,7 @@ text {
     font-family: Candara;
     text-align: center
 }
+.background {
+    width: 100%;
+    background-image: url('../images/background.jpg');
+}
