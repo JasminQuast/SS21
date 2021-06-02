@@ -10,12 +10,18 @@ h2 {
     font-size: larger;
     font-family: Candara;
 }
+
+h3 {
+    color: #0c6565;
+    font-size: x-large;
+    font-family: Candara;
+}
+
 text {
     color: #0c6565;
     font-family: Candara;
     text-align: center
 }
-.background {
-    width: 100%;
-    background-image: url('../images/background.jpg');
+body {
+    font-family: Candara;
 }
