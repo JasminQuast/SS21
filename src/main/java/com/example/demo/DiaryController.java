@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.config.Endpoints;
-import com.example.demo.config.ViewNames;
+import config.Endpoints;
+import config.ViewNames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
@@ -14,19 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class DiaryController {
 
     private final DiaryService diaryService;
-//    private Connection connection;
-//    private static final Logger L = LoggerFactory.getLogger(DiaryController.class);
-//
-//    public void setConnection(Connection connection) {
-//        this.connection = connection;
-//    }
-//
-//    protected Connection useConnection() {
-//        /*if (connection == null) {
-//            throw new DataException("");
-//        }*/
-//        return this.connection;
-//    }
 
     @Autowired
     public DiaryController(DiaryService diaryService) {
@@ -35,6 +22,12 @@ public class DiaryController {
 
     @GetMapping(path = Endpoints.Site.DIARYST)
     public ModelAndView mainPage(Model model){
+
+        return new ModelAndView(ViewNames.DIARYST);
+    }
+
+    @GetMapping(path = Endpoints.Site.SLASH)
+    public ModelAndView mainPageSlash(Model model){
 
         return new ModelAndView(ViewNames.DIARYST);
     }
@@ -76,39 +69,31 @@ public class DiaryController {
 //                    return new ModelAndView(ViewNames.NOTECREATION);
 //                }
 
-            /*} catch (SQLException e) {
-                L.error("Result Error", e);
-                throw new DataException(e);
-            }
-        } catch (SQLException e) {
-            L.error("Statement Error", e);
-            throw new DataException(e);
-        }*/
 
-    @GetMapping(path = Endpoints.Site.HOME)
+    @GetMapping(path = Endpoints.Site.TODAY)
     public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
 
         Note todaysNote = diaryService.getTodaysNote(user);
             if (todaysNote != null) {
                 model.addAttribute("note", todaysNote);
-                return new ModelAndView(ViewNames.HOME2);
+                return new ModelAndView(ViewNames.TODAY2);
             }
         model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.NOTECREATION);
     }
 
-    @PostMapping(path = Endpoints.Site.HOME)
+    @PostMapping(path = Endpoints.Site.TODAY)
     public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user,@ModelAttribute Note note, Model model) {
         note.setOwner(user.getEmail());
         diaryService.createNote(note);
         model.addAttribute("note",note);
-        return new ModelAndView(ViewNames.HOME2);
+        return new ModelAndView(ViewNames.TODAY2);
     }
 
     @GetMapping(path = Endpoints.Site.NOTERESULT)
     public ModelAndView noteResult(Model model){
         //model.addAttribute("note", new Note());
-        return new ModelAndView(ViewNames.HOME);
+        return new ModelAndView(ViewNames.TODAY);
     }
 
     @GetMapping(path = "/editNote")

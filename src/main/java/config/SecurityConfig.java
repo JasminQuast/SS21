@@ -1,11 +1,10 @@
-package com.example.demo.config;
+package config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -13,10 +12,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                .authorizeRequests()
                 .antMatchers(
                         HttpMethod.GET,
-                        Endpoints.Site.OVERVIEW
+                        Endpoints.Site.DIARYST,
+                        Endpoints.Site.SLASH,
+                        Endpoints.Site.LOGIN,
+                        Endpoints.Site.REGISTER
                 ).permitAll()
                 .antMatchers(
                         "/css/**",
@@ -25,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/overview")
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logout().logoutSuccessUrl("/")
                 .and()
                 .oauth2Client()
                 .and()

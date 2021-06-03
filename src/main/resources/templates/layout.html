@@ -35,10 +35,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/diaryst}" th:classappend="${#request.requestURI == '/diaryst' ? 'active':''}"><h2>Diaryst</h2></a>
+                        <a class="nav-link" th:href="@{/}" th:classappend="${#request.requestURI == '/' ? 'active':''}"><h2>Diaryst</h2></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}" th:classappend="${#request.requestURI == '/' ? 'active':''}"><h2>Today</h2></a>
+                        <a class="nav-link" th:href="@{/today}" th:classappend="${#request.requestURI == '/today' ? 'active':''}"><h2>Today</h2></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/overview}" th:classappend="${#request.requestURI == '/overview' ? 'active':''}"><h2>Overview</h2></a>
@@ -49,18 +49,16 @@
                 </ul>
                 <div class="d-flex">
                     <div sec:authorize="!isAuthenticated()">
-                        <a class="btn btn-outline-primary me-2" th:href="@{/login}" th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a></div>
+                        <a class="btn btn-outline-primary position-absolute end-0 mx-5" th:href="@{/login}" th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a>
+                        <a class="btn btn-outline-primary position-absolute end-0 mx-5" th:href="@{/register}" th:classappend="${#request.requestURI == '/register' ? 'active':''}">Register</a>
                     </div>
                     <div sec:authorize="isAuthenticated()">
                         <form class="position-absolute end-0 mx-5" id="logout-form" method="POST" action="#" th:action="@{/logout}">
                             <button type="submit" class="btn btn-outline-primary">Logout</button>
                         </form>
-
-<!--                        <form  class="position-absolute end-0 mx-5" id="logout-form" method="post" action="#" th:action="@{/logout}">-->
-<!--                            <button type="submit" class="btn btn-outline-primary">Logout</button>-->
-<!--                        </form>-->
-<!--            </>-->
                     </div>
+                </div>
+
             </div>
         </div>
     </nav>
