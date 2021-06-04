@@ -15,7 +15,6 @@ import java.net.URI;
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     ClientRegistrationRepository clientRegistrationRepository;
 
     OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler() {
@@ -33,9 +32,11 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // all other requests
                 .anyRequest().authenticated()
+                .and()
+                .oauth2Login().and().csrf().disable()
 
                 // RP-initiated logout
-                .and().logout().logoutSuccessHandler(oidcLogoutSuccessHandler())
+                .logout().logoutSuccessHandler(oidcLogoutSuccessHandler())
 
                 // enable OAuth2/OIDC
                 .and().oauth2Login();

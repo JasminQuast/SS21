@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Overview</title>
+
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src='https://vuejs.org/js/vue.js'></script>
+    <script src="#" th:src="@{/js/editNote.js}" defer></script>
+
 </head>
 <body>
 
 <h1>Hier siehst du deine Einträge aus den vergangenen Tagen.</h1>
 
+<div id="app">
+    <editNote></editNote>
+</div>
 
 <div class="container ms-5 mt-5 mb-5">
 
@@ -51,7 +61,7 @@
 <!--                        document.write('<a href="' + link[ran] + '"><img src="' + image[ran] + '" border="0" /></a>');-->
 <!--                    </script>-->
 
-                <img th:src="@{/images/city.png}" class="card-img-top" alt="...">-->
+                <img th:src="@{/images/city.png}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title mt-3" th:text="${note.headline}"></h5>
                     <p class="card-text mt-3" th:text="${note.text}"></p>
