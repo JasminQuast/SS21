@@ -1,6 +1,43 @@
+new Vue({
+    el: "dynamic-pic",
+    data: {
+        images: [
+            'alaska.png',
+            'asia.png',
+            'birds.png',
+            'cave.png',
+            'city.png',
+            'forest.png',
+            'fox.png',
+            'mountain.png',
+            'river.png',
+            'saturn.png',
+            'skye.png',
+            'sunrise.png',
+            'tree.png',
+            'wulf.png'
+            // 'https://picsum.photos/600/200',
+            // 'https://picsum.photos/600/200',
+            // 'https://picsum.photos/600/200'
+        ],
+        selectedImage: null
+    },
+    methods: {
+        randomItem (items) {
+            return items[Math.floor(Math.random()*items.length)];
+        }
+    },
+    created() {
+        this.selectedImage = this.randomItem(this.images)
+    }
+
+})
+
+
+/*
 const app = Vue.createApp({})
 
-app.component('editNote', {
+app.component('dynamic-pic', {
    template:`
     <div class="container ms-5 mt-5 mb-5">
 
@@ -20,29 +57,29 @@ app.component('editNote', {
         <div class="col-sm-9">
             <div class="card">
 
-<!--                    <script language="JavaScript" type="text/javascript">-->
-<!--                        var image = new Array();-->
+                    <script language="JavaScript" type="text/javascript">
+                        var image = new Array();
 
-<!--                        image[1] = 'alaska.png';-->
-<!--                        image[2] = 'asia.png';-->
-<!--                        image[3] = 'birds.png';-->
-<!--                        image[4] = 'cave.png';-->
-<!--                        image[5] = 'city.png';-->
-<!--                        image[6] = 'forest.png';-->
-<!--                        image[7] = 'fox.png';-->
-<!--                        image[8] = 'mountain.png';-->
-<!--                        image[9] = 'river.png';-->
-<!--                        image[10] = 'saturn.png';-->
-<!--                        image[11] = 'skye.png';-->
-<!--                        image[12] = 'sunrise.png';-->
-<!--                        image[13] = 'tree.png';-->
-<!--                        image[14] = 'wulf.png';-->
+                        image[1] = 'alaska.png';
+                        image[2] = 'asia.png';
+                        image[3] = 'birds.png';
+                        image[4] = 'cave.png';
+                        image[5] = 'city.png';
+                        image[6] = 'forest.png';
+                        image[7] = 'fox.png';
+                        image[8] = 'mountain.png';
+                        image[9] = 'river.png';
+                        image[10] = 'saturn.png';
+                        image[11] = 'skye.png';
+                        image[12] = 'sunrise.png';
+                        image[13] = 'tree.png';
+                        image[14] = 'wulf.png';
 
-<!--                        var num = Math.random();-->
-<!--                        var ran = Math.floor((image.length - 1) * num) + 1;-->
+                        var num = Math.random();
+                        var ran = Math.floor((image.length - 1) * num) + 1;
 
-<!--                        document.write('<a href="' + link[ran] + '"><img src="' + image[ran] + '" border="0" /></a>');-->
-<!--                    </script>-->
+                        document.write('<a href="' + link[ran] + '"><img src="' + image[ran] + '" border="0" /></a>');
+                    </script>
 
                 <img v-bind:src="'/images/city.png'" class="card-img-top" alt="...">-->
                 <div class="card-body">
@@ -70,4 +107,4 @@ mounted: function() {
        this.getNote();
 }
 
-});
+});*/
