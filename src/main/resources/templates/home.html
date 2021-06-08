@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <script src="https://unpkg.com/vue@next" defer></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src='https://vuejs.org/js/vue.js'></script>
-    <script src="#" th:src="@{/javaScript/dynamic-pic.js}" defer></script>
-
-    <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-    />
     <title>Home</title>
 </head>
 <body>
@@ -26,9 +14,8 @@
 <h1>Hallo, ich hoffe du hattest einen schönen Tag!</h1>
 <!--<h1 th:text="${name} + ', schön dich du sehen.'"></h1>-->
 
-<div id="dynamic-pic">
-    <h2>Random image in Vue.js:</h2>
-    <p v-if="selectedImage"><img style="width:100%" :src="selectedImage" alt=""></p>
+<div id="app">
+    <dynamic-pic></dynamic-pic>
 </div>
 
 
