@@ -2,7 +2,7 @@ const app = Vue.createApp({});
 app.component('dynamic-pic', {
     template: `
         <p v-if="selectedImage"><img style="width:50%" :src="selectedImage" alt=""></p>
-        <button @click="randomItem" >Change Picture</button>
+        <button type="button" @click="randomItem()">Change Picture</button>
     `,
     data() {
         return {
@@ -26,7 +26,7 @@ app.component('dynamic-pic', {
         };
     },
     methods: {
-        randomItem () {
+        randomItem() {
             console.log('random item');
             return this.images[Math.floor(Math.random()*this.images.length)];
         }

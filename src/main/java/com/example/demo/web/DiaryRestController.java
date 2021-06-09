@@ -1,50 +1,69 @@
-//package com.example.demo.web;
-//
-//import com.example.demo.DiaryService;
-//import com.example.demo.Note;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.*;
-//import java.time.LocalDate;
-//import java.time.Month;
-//import java.util.List;
-//
-//@RestController
-//public class DiaryRestController {
-//
-//        private final DiaryService diaryService;
-//
-//        @Autowired
-//        public DiaryRestController(DiaryService diaryService) {
-//                this.diaryService = diaryService;
-//        }
-//
-//        @GetMapping("/")
-//        public List<Note> test(){
-//                return List.of(
-//                        new Note(
-//                                "I'm a headline",
-//                                "I'm a text ...",
-//                                3,
-//                                LocalDate.of(2000, Month.APRIL,4)
-//                        )
-//                );
-//        }
-//
-//        @GetMapping(path = "/note")
-//        public ResponseEntity<List<Note>> getAllNotes (){
-//                var noteList = diaryService.getNotes();
-//           return ResponseEntity.ok(noteList);
-//        }
-//
-//        @PostMapping(path = "/note")
-//        public void createNewNote(@RequestBody Note note){
-//                diaryService.createNote(note);
-//        }
-//
-//}
-//
+package com.example.demo.web;
+
+import com.example.demo.DiaryService;
+import com.example.demo.Note;
+import config.Endpoints;
+import config.ViewNames;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+
+@RestController
+public class DiaryRestController {
+
+        private final DiaryService diaryService;
+
+        public DiaryRestController(DiaryService noteService) {
+                this.diaryService = noteService;
+        }
+
+
+        @GetMapping(path = Endpoints.Site.OVERVIEW)
+        public ModelAndView overviewPage(@AuthenticationPrincipal OidcUser user, Model model){
+                var noteList = diaryService.getNotesUser(user);
+                model.addAttribute("note", noteList);
+                return new ModelAndView(ViewNames.OVERVIEW);
+        }
+        @GetMapping(path = Endpoints.Site.TODAY)
+        public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
+
+                Note todaysNote = diaryService.getTodaysNote(user);
+                if (todaysNote != null) {
+                        model.addAttribute("note", todaysNote);
+                        return new ModelAndView(ViewNames.TODAY2);
+                }
+                model.addAttribute("note", new Note());
+                return new ModelAndView(ViewNames.NOTECREATION);
+        }
+
+        @PostMapping(path = Endpoints.Site.TODAY)
+        public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user,@ModelAttribute Note note, Model model) {
+                note.setOwner(user.getEmail());
+                diaryService.createNote(note);
+                model.addAttribute("note",note);
+                return new ModelAndView(ViewNames.TODAY2);
+        }
+
+        @GetMapping(path = Endpoints.Site.NOTERESULT)
+        public ModelAndView noteResult(Model model){
+                return new ModelAndView(ViewNames.TODAY);
+        }
+
+        @GetMapping(path = "/editNote")
+        public ModelAndView editNote (@RequestParam long id, Model model){
+                Note noteById = diaryService.getNoteById(id);
+                if(noteById != null){
+                        model.addAttribute("note", noteById);
+                        return new ModelAndView("editNote");
+                }
+                //error.Html hinzufügen und zurückgeben, falls ID in URL händisch abgeändert wurde
+                return null;
+        }
+
+}
+
 
 
