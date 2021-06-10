@@ -4,7 +4,7 @@ public class ViewNames {
 
     public static final String DIARYST = "diaryst";
     public static final String TODAY = "today";
-    public static final String TODAY2 = "todayExistNote";
+    public static final String TODAY2 = "homeExistNote";
     public static final String OVERVIEW = "overview";
     public static final String SETTINGS = "settings";
     public static final String NOTECREATION = "home";

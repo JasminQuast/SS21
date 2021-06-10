@@ -39,7 +39,8 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutSuccessHandler(oidcLogoutSuccessHandler())
 
                 // enable OAuth2/OIDC
-                .and().oauth2Login();
+                .and().oauth2Login()
+                .and().csrf().disable();
     }
 }
 //

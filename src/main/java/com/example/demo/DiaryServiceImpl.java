@@ -35,8 +35,9 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
-    public void createNote(Note note) {
+    public Note createNote(Note note) {
         diaryRepository.save(note);
+        return note;
     }
 
     @Override
