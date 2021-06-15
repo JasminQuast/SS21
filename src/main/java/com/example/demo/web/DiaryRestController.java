@@ -25,7 +25,7 @@ public class DiaryRestController {
 
         @PostMapping(path = "/todaysNote" )
         public Note NewNote(@RequestBody Note note){
-                System.out.println("noteeeee" + note);
+                System.out.println("Noteeeee: " + note);
                 return diaryService.createNote(note);
         }
 }

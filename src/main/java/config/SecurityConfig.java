@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.client.oidc.web.logout.OidcClientInitiatedLogoutSuccessHandler;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 import java.net.URI;
 
@@ -25,15 +26,16 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
 
                 // allow anonymous access to the root page
                 .antMatchers("/").permitAll()
 
                 // all other requests
-                .anyRequest().authenticated()
+                .anyRequest().authenticated().and().exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
                 .and().oauth2Login()
-                .and().csrf().disable()
+
+                .and()
 
                 // RP-initiated logout
                 .logout().logoutSuccessHandler(oidcLogoutSuccessHandler());
