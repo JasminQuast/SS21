@@ -33,10 +33,12 @@ export default {
         }
     },
     template:`
+<div>
      <div>
      <p v-if="selectedImage"><img style="width:50%" :src="selectedImage" alt=""></p>
         <button type="button" @click="randomItem()">Change Picture</button>
      <br>
+     </div>
      
      <div class="input-group mb-3 mt-5 input-group-lg shadow" >
         <input v-model="headline" type="text" class="form-control" placeholder="Gib deinem Tag einen Namen...">
@@ -95,9 +97,9 @@ export default {
     <span>Bewertung: {{emotion}}</span>
     </section>
   
-     </div>
      <button type="button" @click="save()">Save</button>
      </div>
+
 `,
     methods: {
         randomItem() {
@@ -111,10 +113,10 @@ export default {
                 .then(response => (this.note = response.data))
         },
         save() {
-            console.log(this.note)
-            axios.post('/todaysNote', {
-                date: this.date,
-                selectedImage: this.selectedImage,
+            //console.log(this.note)
+            axios.post('/todaysNote',{
+               // date: this.date,
+               // selectedImage: this.selectedImage,
                 headline: this.headline,
                 text: this.text,
                 emotion: this.emotion

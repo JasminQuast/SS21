@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+
 import javax.persistence.*;
 import javax.swing.*;
 import java.time.LocalDate;
@@ -63,6 +65,13 @@ public class Note implements Comparable {
 //        this.text = text;
 //        this.emotion = emotion;
 //    }
+
+        public Note(String headline, String text, Integer emotion) {
+        this.date = LocalDate.now();
+        this.headline = headline;
+        this.text = text;
+        this.emotion = emotion;
+    }
 
     public Note() {
         this.date = LocalDate.now();
