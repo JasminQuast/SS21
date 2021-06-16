@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import config.Endpoints;
-import config.ViewNames;
+import com.example.demo.config.Endpoints;
+import com.example.demo.config.ViewNames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
