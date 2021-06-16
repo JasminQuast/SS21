@@ -56,11 +56,11 @@
                 </ul>
 
                 <div class="loginLogout" sec:authorize="!isAuthenticated()">
-                    <a class="login" th:href="@{/oauth2/authorization/okta}" th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a>
+                    <a class="btn btn-outline-info position-absolute end-0 mx-5 " th:href="@{/oauth2/authorization/okta}" th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a>
                 </div>
                 <div class="loginLogout" sec:authorize="isAuthenticated()">
                     <form id="logout-form" method="POST" action="#" th:action="@{/logout}" >
-                        <button type="submit" class="login">Logout</button>
+                        <button type="submit" class="btn btn-outline-info position-absolute end-0 mx-5">Logout</button>
                     </form>
                 </div>
 

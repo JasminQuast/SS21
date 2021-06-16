@@ -2,6 +2,7 @@ package com.example.demo.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,7 +11,7 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 
 import java.net.URI;
 
-
+@Configuration
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -36,7 +37,15 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
 
                 // allow anonymous access to the root page
-                .antMatchers("/").permitAll()
+                .antMatchers(
+                        Endpoints.Site.SLASH,
+                        Endpoints.Site.DIARYST
+                ).permitAll()
+                .antMatchers(
+                        "/css/**",
+                        "/images/**",
+                        "/js/**")
+                .permitAll()
 
                 // all other requests
                 .anyRequest().authenticated().and().exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
