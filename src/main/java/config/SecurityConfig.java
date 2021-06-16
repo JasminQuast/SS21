@@ -1,6 +1,7 @@
 package config;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,11 +16,20 @@ import java.net.URI;
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+//    ClientRegistrationRepository clientRegistrationRepository;
+//
+//    OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler() {
+//        OidcClientInitiatedLogoutSuccessHandler successHandler = new OidcClientInitiatedLogoutSuccessHandler(clientRegistrationRepository);
+//        successHandler.setPostLogoutRedirectUri(URI.create("http://localhost:8080/login/oauth2/code/okta"));
+//        return successHandler;
+//    }
+
+    @Autowired
     ClientRegistrationRepository clientRegistrationRepository;
 
     OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler() {
         OidcClientInitiatedLogoutSuccessHandler successHandler = new OidcClientInitiatedLogoutSuccessHandler(clientRegistrationRepository);
-        successHandler.setPostLogoutRedirectUri(URI.create("http://localhost:8080/login/oauth2/code/okta"));
+        successHandler.setPostLogoutRedirectUri(URI.create("http://localhost:8080/"));
         return successHandler;
     }
 
