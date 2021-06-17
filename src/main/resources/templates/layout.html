@@ -19,9 +19,10 @@
     <script src="https://unpkg.com/vue@next" defer></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<!--    <script src="#" type="module" th:src="@{/js/picture.js}" defer></script>-->
+
     <script src="#" type="module" th:src="@{/js/main.js}" defer></script>
     <script src="#" type="module" th:src="@{/js/note.js}" defer></script>
+    <script src="#" type="module" th:src="@{/js/images.js}" defer></script>
 
 </head>
 <body>
@@ -63,19 +64,6 @@
                         <button type="submit" class="btn btn-outline-info position-absolute end-0 mx-5">Logout</button>
                     </form>
                 </div>
-
-<!--                <div class="d-flex">-->
-<!--                    <div sec:authorize="!isAuthenticated()">-->
-<!--                        <a class="login" th:href="@{/oauth2/authorization/okta}" th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a>-->
-
-<!--                    </div>-->
-<!--                    <div sec:authorize="isAuthenticated()">-->
-<!--                        <form class="position-absolute end-0 mx-5" id="logout-form" method="POST" action="#" th:action="@{/logout}">-->
-<!--                            <button type="submit" class="btn btn-outline-info">Logout</button>-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </div>-->
-
             </div>
         </div>
     </nav>
@@ -83,7 +71,6 @@
 </header>
 <main role="main" class="content-wrapper mt-3">
     <div class="container">
-        <!--/*@thymesVar id="template" type="templates"*/-->
         <section th:include="${template}"></section>
     </div>
 </main>

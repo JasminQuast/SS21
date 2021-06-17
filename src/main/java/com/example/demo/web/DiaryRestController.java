@@ -28,11 +28,6 @@ public class DiaryRestController {
                 return todaysNote;
         }
 
-//        @PostMapping(path = "/todaysNote" )
-//        public Note NewNote(@RequestBody Note note){
-//                System.out.println("Noteeeee: " + note);
-//                return diaryService.createNote(note);
-//        }
         @PostMapping(path = "/todaysNote")
         public Note createNewNote(@AuthenticationPrincipal OidcUser user, @RequestBody Note note){
                note.setOwner(user.getEmail());
