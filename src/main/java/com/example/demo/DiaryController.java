@@ -48,10 +48,11 @@ public class DiaryController {
     public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
 
         Note todaysNote = diaryService.getTodaysNote(user);
-        if (todaysNote != null) {
-            model.addAttribute("note", todaysNote);
-            return new ModelAndView(ViewNames.TODAY2);
-        }
+        //rausgenommen, um zu testen ob heutige Note in der Vue Komponente angezeigt wird
+//        if (todaysNote != null) {
+//            model.addAttribute("note", todaysNote);
+//            return new ModelAndView(ViewNames.TODAY2);
+//        }
         model.addAttribute("note", new Note());
         return new ModelAndView(ViewNames.NOTECREATION);
     }
