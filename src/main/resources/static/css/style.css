@@ -20,3 +20,6 @@ h3 {
 body {
     font-family: Candara;
 }
+.pre-formatted {
+    white-space: pre-wrap;
+}
