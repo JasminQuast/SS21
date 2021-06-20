@@ -25,7 +25,7 @@ public class DiaryRestController {
 
         @GetMapping(path = "/todaysNote")
         public Note note(@AuthenticationPrincipal OidcUser user){
-                var todaysNote = diaryService.getTodaysNote(user);
+                var todaysNote = diaryService.getTodaysNote(user.getEmail());
                 return todaysNote;
         }
 

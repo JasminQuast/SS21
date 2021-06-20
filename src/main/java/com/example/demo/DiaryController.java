@@ -40,14 +40,14 @@ public class DiaryController {
 
     @GetMapping(path = Endpoints.Site.OVERVIEW)
     public ModelAndView overviewPage(@AuthenticationPrincipal OidcUser user, Model model){
-        var noteList = diaryService.getNotesUser(user);
+        var noteList = diaryService.getNotesUser(user.getEmail());
         model.addAttribute("note", noteList);
         return new ModelAndView(ViewNames.OVERVIEW);
     }
     @GetMapping(path = Endpoints.Site.TODAY)
     public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
 
-        Note todaysNote = diaryService.getTodaysNote(user);
+        Note todaysNote = diaryService.getTodaysNote(user.getEmail());
         model.addAttribute("note", new Note());
 
         //rausgenommen, um zu testen ob heutige Note in der Vue Komponente angezeigt wird
