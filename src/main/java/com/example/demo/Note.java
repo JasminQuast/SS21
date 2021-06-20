@@ -73,6 +73,14 @@ public class Note implements Comparable {
         this.emotion = emotion;
     }
 
+    public Note(String headline, String text, Integer emotion, LocalDate date) {
+        this.date = LocalDate.now();
+        this.headline = headline;
+        this.text = text;
+        this.emotion = emotion;
+        this.date = date;
+    }
+
     public Note() {
         this.date = LocalDate.now();
     }

@@ -27,12 +27,12 @@ public class DiaryService {
 //        this.diaryRepository = diaryRepository;
 //    }
 
-    public List<Note> getNotesUser(OidcUser user) {
+    public List<Note> getNotesUser(String userEmail) {
         var noteList = diaryRepository.findAll();
         List<Note> noteListUser = new LinkedList<>();
         for (Note note : noteList) {
             if (note.getOwner() != null) {
-                if (note.getOwner().equals(user.getEmail())) {
+                if (note.getOwner().equals(userEmail)) {
                     if (!note.getDate().equals(LocalDate.now())) {
                         noteListUser.add(note);
                     }
@@ -54,12 +54,12 @@ public class DiaryService {
     public void deleteNote() {
     }
 
-    public Note getTodaysNote(OidcUser user) {
+    public Note getTodaysNote(String userEmail) {
 
         var noteList = diaryRepository.findAll();
         for (Note note : noteList) {
             if (note.getOwner() != null) {
-                if (note.getOwner().equals(user.getEmail())) {
+                if (note.getOwner().equals(userEmail)) {
                     if (note.getDate().equals(LocalDate.now())) {
                         return note;
                     }
