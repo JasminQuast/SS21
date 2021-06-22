@@ -44,6 +44,7 @@ public class DiaryController {
         model.addAttribute("note", noteList);
         return new ModelAndView(ViewNames.OVERVIEW);
     }
+
     @GetMapping(path = Endpoints.Site.TODAY)
     public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
 
@@ -82,5 +83,12 @@ public class DiaryController {
 //        return null;
 //    }
 
-
+    @GetMapping(path = "/deleteNote")
+    public ModelAndView editNote (@AuthenticationPrincipal OidcUser user,@RequestParam long id, Model model){
+        diaryService.deleteNote(id);
+        var noteList = diaryService.getNotesUser(user.getEmail());
+        model.addAttribute("note", noteList);
+        return new ModelAndView(ViewNames.OVERVIEW);
+    //error.Html hinzufügen und zurückgeben, falls ID in URL händisch abgeändert wurde oder URL erneut ausgeführt wird
+    }
 }
