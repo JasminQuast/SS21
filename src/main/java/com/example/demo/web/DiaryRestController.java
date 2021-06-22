@@ -34,6 +34,11 @@ public class DiaryRestController {
                note.setOwner(user.getEmail());
                return diaryService.createNote(note);
         }
+
+        @DeleteMapping("/{id}")
+        public void deleteNote(@PathVariable long id){
+                diaryService.deleteNote(id);
+        }
 }
 
 
