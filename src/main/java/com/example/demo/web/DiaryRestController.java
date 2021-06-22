@@ -35,7 +35,7 @@ public class DiaryRestController {
                return diaryService.createNote(note);
         }
 
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/todaysNote/{id}")
         public void deleteNote(@PathVariable long id){
                 diaryService.deleteNote(id);
         }

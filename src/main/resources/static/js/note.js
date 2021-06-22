@@ -7,13 +7,10 @@ export default {
             headline: '',
             text: '',
             emotion: '',
-            note: []
+            note: ''
         }
     },
-    props: ['title'],
     template:`
-
-<h1>{{title}}</h1>
 
 <div v-if="note.length !== 0">
 <h1>Dein heutiger Eintrag</h1>
