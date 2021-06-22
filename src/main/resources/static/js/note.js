@@ -7,10 +7,13 @@ export default {
             headline: '',
             text: '',
             emotion: '',
-            note: [],
+            note: []
         }
     },
+    props: ['title'],
     template:`
+
+<h1>{{title}}</h1>
 
 <div v-if="note.length !== 0">
 <h1>Dein heutiger Eintrag</h1>
@@ -57,7 +60,7 @@ export default {
           <h5 class="pre-formatted">{{note.headline}}</h5>
           <p class="pre-formatted">{{note.text}}</p>
             <button type="button" class="btn btn-outline-secondary mt-4">edit</button>
-            <button type="button" class="btn btn-outline-danger ms-2 mt-4">delete</button>
+<!--            <button type="button" class="btn btn-outline-danger ms-2 mt-4" @click="delete()">delete</button>-->
         </div>
       </div>
     </div>
@@ -144,7 +147,7 @@ export default {
                 .then(response => (this.note = response.data))
         },
         save() {
-            axios.post('/todaysNote',{
+            axios.post('/todaysNote', {
                 headline: this.headline,
                 text: this.text,
                 emotion: this.emotion
@@ -154,7 +157,19 @@ export default {
                 }, (error) => {
                     console.log('Der Eintrag konnte nicht gespeichert werden.');
                 });
+
         }
+        // ,
+        // delete() {
+        //    axios.delete ('/deleteNote',{
+        //         id: this.note.id
+        //     })
+        //         .then((response) => {
+        //             this.loadNote();
+        //         }, (error) => {
+        //             console.log('Der Eintrag konnte nicht gespeichert werden.');
+        //         });
+        // }
     },
 
 mounted: function() {

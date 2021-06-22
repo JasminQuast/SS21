@@ -1,7 +1,7 @@
-import note from './note.js';
-import images from './images.js';
+import Note from './note.js';
+import Images from './images.js';
 
 const app = Vue.createApp({})
-app.component('note', note)
-app.component('images', images)
+app.component('note', Note)
+app.component('images', Images)
 app.mount('#app')
