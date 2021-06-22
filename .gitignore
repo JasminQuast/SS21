@@ -41,3 +41,6 @@ out/
 .idea
 .gradle
 build
+
+### Node modules ###
+node_modules
