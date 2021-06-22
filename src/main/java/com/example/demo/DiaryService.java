@@ -51,7 +51,8 @@ public class DiaryService {
     public void updateNote() {
     }
 
-    public void deleteNote() {
+    public void deleteNote(long id) {
+        diaryRepository.deleteById(id);
     }
 
     public Note getTodaysNote(String userEmail) {
