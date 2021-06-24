@@ -47,9 +47,9 @@ public class DiaryController {
 
     @GetMapping(path = Endpoints.Site.TODAY)
     public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
-
-        Note todaysNote = diaryService.getTodaysNote(user.getEmail());
-        model.addAttribute("note", new Note());
+//
+//        Note todaysNote = diaryService.getTodaysNote(user.getEmail());
+//        model.addAttribute("note", new Note());
 
         //rausgenommen, um zu testen ob heutige Note in der Vue Komponente angezeigt wird
 //        if (todaysNote != null) {
@@ -59,13 +59,13 @@ public class DiaryController {
         return new ModelAndView(ViewNames.NOTECREATION);
     }
 
-    @PostMapping(path = Endpoints.Site.TODAY)
-    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user,@ModelAttribute Note note, Model model) {
-        note.setOwner(user.getEmail());
-        diaryService.createNote(note);
-        model.addAttribute("note",note);
-        return new ModelAndView(ViewNames.TODAY2);
-    }
+//    @PostMapping(path = Endpoints.Site.TODAY)
+//    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user,@ModelAttribute Note note, Model model) {
+//        note.setOwner(user.getEmail());
+//        diaryService.createNote(note);
+//        model.addAttribute("note",note);
+//        return new ModelAndView(ViewNames.TODAY2);
+//    }
 
 //    @GetMapping(path = Endpoints.Site.NOTERESULT)
 //    public ModelAndView noteResult(Model model){
@@ -83,12 +83,18 @@ public class DiaryController {
 //        return null;
 //    }
 
-    @GetMapping(path = "/deleteNote")
-    public ModelAndView editNote (@AuthenticationPrincipal OidcUser user,@RequestParam long id, Model model){
-        diaryService.deleteNote(id);
-        var noteList = diaryService.getNotesUser(user.getEmail());
-        model.addAttribute("note", noteList);
-        return new ModelAndView(ViewNames.OVERVIEW);
-    //error.Html hinzufügen und zurückgeben, falls ID in URL händisch abgeändert wurde oder URL erneut ausgeführt wird
-    }
+//    @GetMapping(path = "/deleteNote")
+//    public ModelAndView deleteNote (@AuthenticationPrincipal OidcUser user,@RequestParam long id, Model model){
+//        diaryService.deleteNote(id);
+//        var noteList = diaryService.getNotesUser(user.getEmail());
+//        model.addAttribute("note", noteList);
+//        return new ModelAndView(ViewNames.OVERVIEW);
+//    //error.Html hinzufügen und zurückgeben, falls ID in URL händisch abgeändert wurde oder URL erneut ausgeführt wird
+//    }
+
+//    @DeleteMapping("/deleteNote/{id}")
+//    public String deleteNote (@AuthenticationPrincipal OidcUser user, @PathVariable("id") long id){
+//        diaryService.deleteNote(id);
+//           return "erfolgreich gelöscht";
+//    }
 }

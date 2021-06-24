@@ -1,9 +1,5 @@
 package com.example.demo;
-
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-
 import javax.persistence.*;
-import javax.swing.*;
 import java.time.LocalDate;
 
 
@@ -58,6 +54,12 @@ public class Note implements Comparable {
     )
     private String owner;
 
+    @Column(
+            name = "image",
+            columnDefinition = "Text"
+    )
+    private String image;
+
 
 //    public Note(String headline, String text, Integer emotion, LocalDate localDate) {
 //        this.date = localDate;
@@ -66,19 +68,21 @@ public class Note implements Comparable {
 //        this.emotion = emotion;
 //    }
 
-        public Note(String headline, String text, Integer emotion) {
+        public Note(String headline, String text, Integer emotion, String image) {
         this.date = LocalDate.now();
         this.headline = headline;
         this.text = text;
         this.emotion = emotion;
+        this.image = image;
     }
 
-    public Note(String headline, String text, Integer emotion, LocalDate date) {
+    public Note(String headline, String text, Integer emotion, LocalDate date, String image) {
         this.date = LocalDate.now();
         this.headline = headline;
         this.text = text;
         this.emotion = emotion;
         this.date = date;
+        this.image = image;
     }
 
     public Note() {
@@ -133,7 +137,15 @@ public class Note implements Comparable {
         this.owner = owner;
     }
 
-//    @Override
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    //    @Override
 //    public String toString() {
 //        return "Note{" +
 //                "id=" + id +

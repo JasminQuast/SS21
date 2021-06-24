@@ -1,6 +1,5 @@
 package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,11 +47,30 @@ public class DiaryService {
         return note;
     }
 
-    public void updateNote() {
+    public boolean updateNote(long id, Note updatedNote ) {
+        var idExists = diaryRepository.existsById(id);
+        if(idExists) {
+            diaryRepository.findById(id).map(note -> {
+                note.setHeadline(updatedNote.getHeadline());
+                note.setText(updatedNote.getText());
+                note.setEmotion(updatedNote.getEmotion());
+                note.setImage(updatedNote.getImage());
+                diaryRepository.save(note);
+                return true;
+            });
+        }
+            return false;
     }
 
-    public void deleteNote(long id) {
-        diaryRepository.deleteById(id);
+    public boolean deleteNote(long id) {
+
+        var idExists = diaryRepository.existsById(id);
+        if(idExists) {
+            diaryRepository.deleteById(id);
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public Note getTodaysNote(String userEmail) {
