@@ -79,6 +79,21 @@ public class Note implements Comparable {
         this.image = image;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Note) {
+            Note other = (Note) o;
+            if (this.date.isBefore(other.date)) {
+                return 1;
+            }
+            if (this.date.isAfter(other.date)) {
+                return -1;
+            }
+            return 0;
+        }
+        return 0;
+    }
+
     public Note() {
         this.date = LocalDate.now();
     }
@@ -139,18 +154,4 @@ public class Note implements Comparable {
         this.image = image;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        if (o instanceof Note) {
-            Note other = (Note) o;
-            if (this.date.isBefore(other.date)) {
-                return 1;
-            }
-            if (this.date.isAfter(other.date)) {
-                return -1;
-            }
-            return 0;
-        }
-        return 0;
-    }
 }

@@ -46,7 +46,7 @@ public class DiaryRestController {
     @PutMapping("/updateNote/{id}")
     public ResponseEntity<Long> updateNote(@RequestBody Note updatedNote, @PathVariable long id) {
         diaryService.updateNote(id, updatedNote);
-        //bei unten stehnder Variante gibt es Probleme mit der Vue Komponente, da diese nicht auf die Response wartet
+        //bei unten stehenden Variante gibt es Probleme mit der Vue Komponente, da diese nicht auf die Response wartet
 //                var isUpdated = diaryService.updateNote(id, updatedNote);
 //                if(!isUpdated) {
 //                        return new ResponseEntity<>(HttpStatus.NOT_FOUND);

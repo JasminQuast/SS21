@@ -83,13 +83,10 @@ export default {
 </div>
 </div>
 
+
 <div v-if="note.length === 0">
 <h1>Hallo {{user}}, ich hoffe du hattest einen schönen Tag!</h1>
-     <div class="mt-5">
-      <p v-if="selectedImage"><img style="width:100%" :src="selectedImage" alt=""></p>
-      <button type="button" class="btn btn-outline-secondary mt-1" @click="randomImage()">random</button>
-     </div>
-     
+    
      <div class="input-group mb-3 mt-5 input-group-lg shadow" >
         <input v-model="headline" type="text" class="form-control" placeholder="Gib deinem Tag einen Namen...">
         <br>
@@ -144,19 +141,20 @@ export default {
         </label>
             <br>  
     </section>
+    
+    <div class="mt-5">
+      <p v-if="selectedImage"><img style="width:60%" :src="selectedImage" alt=""></p>
+      <button type="button" class="btn btn-outline-secondary mt-1" @click="randomImage()">Select Image</button>
+    </div>
   
      <div class="mt-3  mb-5">
         <button type="button" class="btn btn-outline-info" @click="save()">Save</button>
      </div>
 </div>
 
+
 <div v-if="note.length !== 0 && edit === true">
 <h1>Ändere deinen heutigen Eintrag!</h1>
-
-     <div>
-      <p v-if="note.image"><img style="width:100%" :src="note.image" alt=""></p>
-     </div>
-     <button type="button" class="btn btn-outline-secondary mt-1" @click="randomImageEditNote()">random</button>
      
      <div class="input-group mb-3 mt-5 input-group-lg shadow" >
         <input v-model="note.headline" type="text" class="form-control" placeholder="Gib deinem Tag einen Namen...">
@@ -212,7 +210,12 @@ export default {
         </label>
             <br>  
     </section>
-  
+       
+     <div class="mt-5">
+      <p v-if="note.image"><img style="width:60%" :src="note.image" alt=""></p>
+      <button type="button" class="btn btn-outline-secondary mt-1" @click="randomImageEditNote()">Change Image</button>
+    </div>
+    
      <div class="mt-3  mb-5">
         <button type="button" class="btn btn-outline-info" @click="updateNote()">update</button>
      </div>
