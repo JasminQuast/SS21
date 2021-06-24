@@ -21,81 +21,25 @@ public class DiaryController {
     }
 
     @GetMapping(path = Endpoints.Site.DIARYST)
-    public ModelAndView mainPage(Model model){
-
+    public ModelAndView mainPage(Model model) {
         return new ModelAndView(ViewNames.DIARYST);
     }
 
     @GetMapping(path = Endpoints.Site.SLASH)
-    public ModelAndView mainPageSlash(Model model){
-
+    public ModelAndView mainPageSlash(Model model) {
         return new ModelAndView(ViewNames.DIARYST);
     }
 
-//    @GetMapping(path = Endpoints.Site.SETTINGS)
-//    public ModelAndView settingPage(Model model) {
-//
-//        return new ModelAndView(ViewNames.SETTINGS);
-//    }
-
     @GetMapping(path = Endpoints.Site.OVERVIEW)
-    public ModelAndView overviewPage(@AuthenticationPrincipal OidcUser user, Model model){
+    public ModelAndView overviewPage(@AuthenticationPrincipal OidcUser user, Model model) {
         var noteList = diaryService.getNotesUser(user.getEmail());
         model.addAttribute("note", noteList);
         return new ModelAndView(ViewNames.OVERVIEW);
     }
 
     @GetMapping(path = Endpoints.Site.TODAY)
-    public ModelAndView todaysNote(){
-//    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
-//
-//        Note todaysNote = diaryService.getTodaysNote(user.getEmail());
-//        model.addAttribute("note", new Note());
-
-        //rausgenommen, um zu testen ob heutige Note in der Vue Komponente angezeigt wird
-//        if (todaysNote != null) {
-//            model.addAttribute("note", todaysNote);
-//            return new ModelAndView(ViewNames.TODAY2);
-//        }
+    public ModelAndView todaysNote() {
         return new ModelAndView(ViewNames.TODAYSNOTE);
     }
 
-//    @PostMapping(path = Endpoints.Site.TODAY)
-//    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user,@ModelAttribute Note note, Model model) {
-//        note.setOwner(user.getEmail());
-//        diaryService.createNote(note);
-//        model.addAttribute("note",note);
-//        return new ModelAndView(ViewNames.TODAY2);
-//    }
-
-//    @GetMapping(path = Endpoints.Site.NOTERESULT)
-//    public ModelAndView noteResult(Model model){
-//        return new ModelAndView(ViewNames.TODAY);
-//    }
-//
-//    @GetMapping(path = "/editNote")
-//    public ModelAndView editNote (@RequestParam long id, Model model){
-//        Note noteById = diaryService.getNoteById(id);
-//        if(noteById != null){
-//            model.addAttribute("note", noteById);
-//            return new ModelAndView("editNote");
-//        }
-        //error.Html hinzufügen und zurückgeben, falls ID in URL händisch abgeändert wurde
-//        return null;
-//    }
-
-//    @GetMapping(path = "/deleteNote")
-//    public ModelAndView deleteNote (@AuthenticationPrincipal OidcUser user,@RequestParam long id, Model model){
-//        diaryService.deleteNote(id);
-//        var noteList = diaryService.getNotesUser(user.getEmail());
-//        model.addAttribute("note", noteList);
-//        return new ModelAndView(ViewNames.OVERVIEW);
-//    //error.Html hinzufügen und zurückgeben, falls ID in URL händisch abgeändert wurde oder URL erneut ausgeführt wird
-//    }
-
-//    @DeleteMapping("/deleteNote/{id}")
-//    public String deleteNote (@AuthenticationPrincipal OidcUser user, @PathVariable("id") long id){
-//        diaryService.deleteNote(id);
-//           return "erfolgreich gelöscht";
-//    }
 }

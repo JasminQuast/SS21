@@ -69,7 +69,6 @@ export default {
 
     <div class="col-sm-9">
       <div class="card" style="width:80%">
-<!--        <img v-if="selectedImage" src="selectedImage" class="card-img-top" style="width:100%" alt="">-->
         <p v-if="note.image"><img style="width:100%" :src="note.image" alt=""></p>
         <div class="card-body">
           <h5 class="pre-formatted">{{note.headline}}</h5>
@@ -82,8 +81,6 @@ export default {
   </div>
 </div>
 </div>
-
-
 
 <div v-if="note.length === 0">
 <h1>Hallo, ich hoffe du hattest einen schönen Tag!</h1>

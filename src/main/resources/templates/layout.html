@@ -59,10 +59,6 @@
                         <a class="nav-link" th:href="@{/overview}"
                            th:classappend="${#request.requestURI == '/overview' ? 'active':''}"><h2>Overview</h2></a>
                     </li>
-                    <!--                    <li class="nav-item">-->
-                    <!--                        <a class="nav-link" th:href="@{/settings}"-->
-                    <!--                           th:classappend="${#request.requestURI == '/settings' ? 'active':''}"><h2>Settings</h2></a>-->
-                    <!--                    </li>-->
                 </ul>
 
                 <div class="loginLogout" sec:authorize="!isAuthenticated()">
@@ -84,9 +80,6 @@
         <section th:include="${template}"></section>
     </div>
 </main>
-<!--    <footer class="container">-->
-<!--        <p>The Footer</p>-->
-<!--    </footer>-->
 </body>
 
 </html>

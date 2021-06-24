@@ -1,4 +1,5 @@
 package com.example.demo;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -61,14 +62,7 @@ public class Note implements Comparable {
     private String image;
 
 
-//    public Note(String headline, String text, Integer emotion, LocalDate localDate) {
-//        this.date = localDate;
-//        this.headline = headline;
-//        this.text = text;
-//        this.emotion = emotion;
-//    }
-
-        public Note(String headline, String text, Integer emotion, String image) {
+    public Note(String headline, String text, Integer emotion, String image) {
         this.date = LocalDate.now();
         this.headline = headline;
         this.text = text;
@@ -144,17 +138,6 @@ public class Note implements Comparable {
     public void setImage(String image) {
         this.image = image;
     }
-
-    //    @Override
-//    public String toString() {
-//        return "Note{" +
-//                "id=" + id +
-//                ", date=" + date +
-//                ", headline='" + headline + '\'' +
-//                ", text='" + text + '\'' +
-//                ", emotion=" + emotion +
-//                '}';
-//    }
 
     @Override
     public int compareTo(Object o) {
