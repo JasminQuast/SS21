@@ -1,4 +1,5 @@
 export default {
+    props: ['user'],
     data() {
         let LocalDate;
         return {
@@ -83,7 +84,7 @@ export default {
 </div>
 
 <div v-if="note.length === 0">
-<h1>Hallo, ich hoffe du hattest einen schönen Tag!</h1>
+<h1>Hallo {{user}}, ich hoffe du hattest einen schönen Tag!</h1>
      <div class="mt-5">
       <p v-if="selectedImage"><img style="width:100%" :src="selectedImage" alt=""></p>
       <button type="button" class="btn btn-outline-secondary mt-1" @click="randomImage()">random</button>

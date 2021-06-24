@@ -6,7 +6,11 @@ global.axios = {
     post() { return Promise.resolve('') }
 }
 
-test('shows greeting',  async () =>  {
-    const wrapper = mount(note);
-    expect(wrapper.text()).toContain('Hallo, ich hoffe du hattest einen schönen Tag!')
+test('shows greeting with user name',  async () =>  {
+    const wrapper = mount(note, {
+        props:{
+            user: 'Max'
+        }
+    });
+    expect(wrapper.text()).toContain('Hallo Max, ich hoffe du hattest einen schönen Tag!')
 })

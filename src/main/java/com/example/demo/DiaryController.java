@@ -38,7 +38,9 @@ public class DiaryController {
     }
 
     @GetMapping(path = Endpoints.Site.TODAY)
-    public ModelAndView todaysNote() {
+    public ModelAndView todaysNote( @AuthenticationPrincipal OidcUser user, Model model) {
+        String userName = user.getGivenName();
+        model.addAttribute("user", userName);
         return new ModelAndView(ViewNames.TODAYSNOTE);
     }
 
