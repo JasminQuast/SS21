@@ -7,3 +7,4 @@ Wenn du mit deinem Eintrag fertig bist, kannst du dich über den Logout Button a
 Diese Seite ist auch ohne Login zugänglich. Solltest du einen Eintrag machen oder deine vergangenen Einträge einsehen wollen, wirst du zu einer Login-Seite weitergeleitet.
 Bist du noch nicht registriert, so kannst du es auf dieser Seite tun.
 
+https://diaryst.herokuapp.com/
