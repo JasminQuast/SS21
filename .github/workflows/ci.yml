@@ -1,22 +1,51 @@
 name: Java CI with Gradle
+#
+#on: [ push ]
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Set up JDK 15
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: 'adopt'
+#          java-version: '15'
+#      - name: clean build
+#        run: ./gradlew clean build --info --stacktrace
+#      - name: Grant execute permission for gradlew
+#        run: chmod +x gradlew
+#      - name: Run Backend tests
+#        env:
+#          OKTA_CLIENT_SECRET: ${{ secrets.OKTA_CLIENT_SECRET }}
+#          JDBC_DATABASE_URL: ${{ secrets.JDBC_DATABASE_URL }}
+#          OKTA_CLIENT_ID: ${{ secrets.OKTA_CLIENT_ID }}
+#          JDBC_DATABASE_USERNAME: ${{ secrets.JDBC_DATABASE_USERNAME }}
+#          JDBC_DATABASE_PASSWORD: ${{ secrets.JDBC_DATABASE_PASSWORD }}
+#        run: ./gradlew test
 
-on: [ push ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 15
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
           java-version: '15'
-      - name: clean build
-        run: ./gradlew clean build --info --stacktrace
+          distribution: 'adopt'
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Run Backend tests
+      - name: Run Backend Tests
         env:
           OKTA_CLIENT_SECRET: ${{ secrets.OKTA_CLIENT_SECRET }}
           JDBC_DATABASE_URL: ${{ secrets.JDBC_DATABASE_URL }}
@@ -24,4 +53,3 @@ jobs:
           JDBC_DATABASE_USERNAME: ${{ secrets.JDBC_DATABASE_USERNAME }}
           JDBC_DATABASE_PASSWORD: ${{ secrets.JDBC_DATABASE_PASSWORD }}
         run: ./gradlew test
-
