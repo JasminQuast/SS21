@@ -13,14 +13,14 @@ public class DiaryService {
     @Autowired
     private DiaryRepository diaryRepository;
 
-    public List<Note> findAll(String userEmail){
-        var iterator = diaryRepository.findAll();
-        var notes = new ArrayList<Note>();
-        for (Note n : iterator) {
-            if(n.getOwner() != null && n.getOwner().equals(userEmail)) notes.add(n);
-        }
-        return notes;
-    }
+//    public List<Note> findAll(String userEmail){
+//        var iterator = diaryRepository.findAll();
+//        var notes = new ArrayList<Note>();
+//        for (Note n : iterator) {
+//            if(n.getOwner() != null && n.getOwner().equals(userEmail)) notes.add(n);
+//        }
+//        return notes;
+//    }
 
 //    public DiaryService(DiaryRepository diaryRepository) {
 //        this.diaryRepository = diaryRepository;
@@ -88,12 +88,12 @@ public class DiaryService {
         return null;
     }
 
-
-    public Note getNoteById(long id) {
-        var noteOptional = diaryRepository.findById(id);
-        Note noteById = noteOptional.get();
-        return noteById;
-        }
+//
+//    public Note getNoteById(long id) {
+//        var noteOptional = diaryRepository.findById(id);
+//        Note noteById = noteOptional.get();
+//        return noteById;
+//        }
 
 
 }

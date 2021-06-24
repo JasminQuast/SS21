@@ -32,11 +32,11 @@ public class DiaryController {
         return new ModelAndView(ViewNames.DIARYST);
     }
 
-    @GetMapping(path = Endpoints.Site.SETTINGS)
-    public ModelAndView settingPage(Model model) {
-
-        return new ModelAndView(ViewNames.SETTINGS);
-    }
+//    @GetMapping(path = Endpoints.Site.SETTINGS)
+//    public ModelAndView settingPage(Model model) {
+//
+//        return new ModelAndView(ViewNames.SETTINGS);
+//    }
 
     @GetMapping(path = Endpoints.Site.OVERVIEW)
     public ModelAndView overviewPage(@AuthenticationPrincipal OidcUser user, Model model){
@@ -46,7 +46,8 @@ public class DiaryController {
     }
 
     @GetMapping(path = Endpoints.Site.TODAY)
-    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
+    public ModelAndView todaysNote(){
+//    public ModelAndView noteSubmit(@AuthenticationPrincipal OidcUser user, Model model){
 //
 //        Note todaysNote = diaryService.getTodaysNote(user.getEmail());
 //        model.addAttribute("note", new Note());
@@ -56,7 +57,7 @@ public class DiaryController {
 //            model.addAttribute("note", todaysNote);
 //            return new ModelAndView(ViewNames.TODAY2);
 //        }
-        return new ModelAndView(ViewNames.NOTECREATION);
+        return new ModelAndView(ViewNames.TODAYSNOTE);
     }
 
 //    @PostMapping(path = Endpoints.Site.TODAY)

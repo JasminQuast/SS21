@@ -6,15 +6,19 @@
     <title>Diaryst</title>
     <link rel="shortcut icon" href="#">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta id="Viewport" name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta id="Viewport" name="viewport"
+          content="width=device-width, initial-scale=0.5, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 
     <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link th:href="@{/css/style.css}" href="#" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" href="#" rel="stylesheet"/>
 
     <!-- JavaScript Bundle with Popper (fpr Bootstrap) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
 
     <script src="https://unpkg.com/vue@next" defer></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -23,11 +27,11 @@
     <script src="#" type="module" th:src="@{/js/main.js}" defer></script>
     <script src="#" type="module" th:src="@{/js/note.js}" defer></script>
     <script src="#" type="module" th:src="@{/js/images.js}" defer></script>
-
 </head>
-<body>
-<header>
 
+<body>
+
+<header>
     <nav class="navbar navbar-expand-lg py-1 navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
@@ -35,7 +39,8 @@
                 <img th:src="@{/images/logo.png}" alt="" width="80" height="80" class="d-inline-block align-text-top">
 
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
                 <span class="navbar-toggler-icon"></span>
 
@@ -43,31 +48,36 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}" th:classappend="${#request.requestURI == '/' ? 'active':''}"><h2>Diaryst</h2></a>
+                        <a class="nav-link" th:href="@{/}" th:classappend="${#request.requestURI == '/' ? 'active':''}">
+                            <h2>Diaryst</h2></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/today}" th:classappend="${#request.requestURI == '/today' ? 'active':''}"><h2>Today</h2></a>
+                        <a class="nav-link" th:href="@{/today}"
+                           th:classappend="${#request.requestURI == '/today' ? 'active':''}"><h2>Today</h2></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/overview}" th:classappend="${#request.requestURI == '/overview' ? 'active':''}"><h2>Overview</h2></a>
+                        <a class="nav-link" th:href="@{/overview}"
+                           th:classappend="${#request.requestURI == '/overview' ? 'active':''}"><h2>Overview</h2></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/settings}" th:classappend="${#request.requestURI == '/settings' ? 'active':''}"><h2>Settings</h2></a>
-                    </li>
+                    <!--                    <li class="nav-item">-->
+                    <!--                        <a class="nav-link" th:href="@{/settings}"-->
+                    <!--                           th:classappend="${#request.requestURI == '/settings' ? 'active':''}"><h2>Settings</h2></a>-->
+                    <!--                    </li>-->
                 </ul>
 
                 <div class="loginLogout" sec:authorize="!isAuthenticated()">
-                    <a class="btn btn-outline-info position-absolute end-0 mx-5 " th:href="@{/oauth2/authorization/okta}" th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a>
+                    <a class="btn btn-outline-info position-absolute end-0 mx-5"
+                       th:href="@{/oauth2/authorization/okta}"
+                       th:classappend="${#request.requestURI == '/login' ? 'active':''}">Login</a>
                 </div>
                 <div class="loginLogout" sec:authorize="isAuthenticated()">
-                    <form id="logout-form" method="POST" action="#" th:action="@{/logout}" >
+                    <form id="logout-form" method="POST" action="#" th:action="@{/logout}">
                         <button type="submit" class="btn btn-outline-info position-absolute end-0 mx-5">Logout</button>
                     </form>
                 </div>
             </div>
         </div>
     </nav>
-
 </header>
 <main role="main" class="content-wrapper mt-3">
     <div class="container">
@@ -78,4 +88,5 @@
 <!--        <p>The Footer</p>-->
 <!--    </footer>-->
 </body>
+
 </html>
